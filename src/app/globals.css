@@ -2,50 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background-color: #FAFAFF; color: #1B053A; overflow-x: hidden; }
+  ::selection { background-color: rgba(232, 28, 255, 0.2); color: #2A0A4A; }
 }
 
-body {
-  background-color: #FAFAFF; 
-  color: #1B053A; 
-  overflow-x: hidden;
+@layer components {
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(27, 5, 58, 0.05); }
+  ::-webkit-scrollbar-thumb { background: rgba(232, 28, 255, 0.6); border-radius: 10px; transition: background 0.3s ease; }
+  ::-webkit-scrollbar-thumb:hover { background: #FBBF24; }
 }
 
-/* -----------------------------------------
-   Custom Premium Toroi Scrollbar
------------------------------------------ */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #1B053A; /* Deep Purple Track */
-}
-::-webkit-scrollbar-thumb {
-  background: #E81CFF; /* Pink Thumb */
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #FBBF24; /* Gold on Hover */
-}
-
-/* -----------------------------------------
-   Premium UI Utility Classes
------------------------------------------ */
 @layer utilities {
-  /* Ultra-Premium Glassmorphism for Dark Backgrounds */
-  .glass-dark {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
-  }
-  
-  /* Ultra-Premium Glassmorphism for Light Backgrounds */
-  .glass-light {
-    @apply bg-white/60 backdrop-blur-lg border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
-  }
-
-  /* Animated Premium Text Gradient */
-  .text-premium-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-toroi-gold via-toroi-pink to-toroi-lightPurple animate-gradient-x;
-  }
+  .glass-dark { @apply bg-black/20 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]; box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1); }
+  .glass-light { @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.05)]; box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5); }
+  .text-premium-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-toroi-purple via-toroi-pink to-toroi-gold bg-[length:200%_auto] animate-gradient-x; }
+  .hover-glow { @apply transition-all duration-300 ease-in-out hover:shadow-[0_0_20px_rgba(232,28,255,0.4)] hover:-translate-y-0.5; }
+  .premium-card { @apply relative overflow-hidden rounded-2xl border border-white/20 bg-white/50 backdrop-blur-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-white/70; }
 }
